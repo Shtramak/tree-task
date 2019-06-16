@@ -186,12 +186,33 @@ public class BinaryTreeImplTest {
         binaryTree = of(12, 5, 18, 2, 9, 15, 19);
         assertTrue(binaryTree.contains(9));
         assertTrue(binaryTree.contains(12));
-        assertEquals(7,binaryTree.size());
+        assertEquals(7, binaryTree.size());
         assertTrue(binaryTree.remove(9));
         assertTrue(binaryTree.remove(15));
 
         assertEquals(5, binaryTree.size());
         assertFalse(binaryTree.contains(9));
         assertFalse(binaryTree.contains(15));
+    }
+
+    @Test
+    public void removeWhenHasNoLeftChildNodeReplaceRemovedNodeWithRightNodeAndReturnsTrue() {
+        binaryTree = of(12, 5, 18, 9, 15, 19);
+        assertTrue(binaryTree.contains(9));
+        assertEquals(6, binaryTree.size());
+        binaryTree.remove(5);
+        assertEquals(5, binaryTree.size());
+        assertFalse(binaryTree.contains(5));
+        System.out.println();
+    }
+
+    @Test
+    public void removeWhenHasNoRightChildNodeReplaceRemovedNodeWithLeftNodeAndReturnsTrue() {
+        binaryTree = of(12, 5, 18, 2, 9, 19);
+        assertTrue(binaryTree.contains(18));
+        assertEquals(6, binaryTree.size());
+        binaryTree.remove(18);
+        assertEquals(5, binaryTree.size());
+        assertFalse(binaryTree.contains(18));
     }
 }
