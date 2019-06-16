@@ -181,12 +181,17 @@ public class BinaryTreeImplTest {
         assertFalse(binaryTree.remove(35));
     }
 
-/*
     @Test
-    public void removeWhenNodeIsLastRemovesNodeAndReturnsTrue(){
-        binaryTree = of(15, 26, 5);
-        assertTrue(binaryTree.remove(5));
-        assertFalse(binaryTree.contains(5));
+    public void removeWhenNodeIsLastRemovesNodeDecreaseSizeAndReturnsTrue() {
+        binaryTree = of(12, 5, 18, 2, 9, 15, 19);
+        assertTrue(binaryTree.contains(9));
+        assertTrue(binaryTree.contains(12));
+        assertEquals(7,binaryTree.size());
+        assertTrue(binaryTree.remove(9));
+        assertTrue(binaryTree.remove(15));
+
+        assertEquals(5, binaryTree.size());
+        assertFalse(binaryTree.contains(9));
+        assertFalse(binaryTree.contains(15));
     }
-*/
 }

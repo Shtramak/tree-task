@@ -166,10 +166,14 @@ public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree<T> {
 
     @Override
     public boolean remove(T element) {
-        Node<T> nodeByElement = walkByTreeAndFindNode(root, element);
-        if (nodeByElement == null) {
+        Objects.requireNonNull(element);
+        Node<T> parentNode = parentNode(element);
+        if (parentNode == null) {
             return false;
         }
-        return false;
+        RemoveNodeStrategy removeStrategy = RemoveNodeStrategy.removeNodeStrategy(parentNode, element);
+        removeStrategy.remove();
+        size--;
+        return true;
     }
 }
